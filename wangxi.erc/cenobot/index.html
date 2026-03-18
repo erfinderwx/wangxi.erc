@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CenoBots L4 年度维护指南 | EnergieReich Consulting GmbH</title>
+    <style>
+        /* ================= 原有样式，未做任何修改 ================= */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        header {
+            border-bottom: 3px solid #0056b3;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            color: #0056b3;
+            margin: 0;
+            font-size: 28px;
+        }
+        .version {
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+        }
+        .system-status-info {
+            background-color: #e8f5e9; 
+            border: 1px solid #2e7d32;
+            color: #1b5e20;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .system-status-info::before {
+            content: '✅'; 
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        h2 {
+            background: #eef5ff;
+            color: #0056b3;
+            padding: 10px 15px;
+            border-left: 5px solid #0056b3;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+            width: 25%;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-replace { background: #ffebee; color: #c62828; }
+        .badge-clean { background: #e8f5e9; color: #2e7d32; }
+        .badge-check { background: #fff3e0; color: #ef6c00; }
+        
+        .note-box {
+            background-color: #fff9db;
+            border: 1px solid #fab005;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 25px;
+            background-color: #fafafa;
+        }
+        .footer strong {
+            color: #333;
+        }
+        .footer a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border: none; width: 100%; max-width: none; }
+            .lang-switcher-container { display: none; } /* 打印时隐藏切换按钮 */
+        }
+
+        /* ================= 新增：多语种切换样式 ================= */
+        .lang-switcher-container {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        .lang-btn {
+            background-color: #fff;
+            color: #0056b3;
+            border: 1px solid #0056b3;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            margin-left: 8px;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover {
+            background-color: #eef5ff;
+        }
+        .lang-btn.active {
+            background-color: #0056b3;
+            color: #fff;
+        }
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="lang-switcher-container">
+        <button class="lang-btn active" onclick="switchLanguage('zh', this)">中文</button>
+        <button class="lang-btn" onclick="switchLanguage('en', this)">English</button>
+        <button class="lang-btn" onclick="switchLanguage('de', this)">Deutsch</button>
+    </div>
+
+    <div id="zh" class="lang-section active">
+        <header>
+            <h1>CenoBots L4 年度维护标准 (Wartung SOP)</h1>
+            <div class="version">授权发布: EnergieReich Consulting GmbH<br>文档版本: V1.3 | 发布日期: 2026-03-18</div>
+        </header>
+
+        <div class="system-status-info">
+            设备的系统上没有报警提示时，基本上不用太担心设备状态。
+        </div>
+
+        <p>本指南适用于授权代理商技术人员对 <strong>CenoBots L4 自主洗地机</strong> 进行年度定期保养。旨在通过明确的检查标准和操作规范，确保设备处于最佳运行状态。</p>
+
+        <h2>1. 核心耗材与结构 (Consumables)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>维护项目</th>
+                    <th>检查标准 (Standard)</th>
+                    <th>操作规程 (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>盘刷 (Disk Brush)</strong></td>
+                    <td>刷毛磨损高度减少超过 50%，或出现严重不均匀磨损。</td>
+                    <td><span class="badge badge-replace">检查/更换</span> 卸下盘刷，清理电机轴心缠绕物，必要时更换新件。</td>
+                </tr>
+                <tr>
+                    <td><strong>吸水扒胶条 (Squeegee)</strong></td>
+                    <td>胶条边缘出现豁口、裂纹或变软导致吸水效果下降。</td>
+                    <td><span class="badge badge-clean">清洁/翻面</span> 清洗胶条。年度维护建议直接翻面使用未磨损边或更换新 Linatex 胶条。</td>
+                </tr>
+                <tr>
+                    <td><strong>侧裙/前裙 (Skirts)</strong></td>
+                    <td>裙边橡胶出现永久性形变或破损，无法挡水。</td>
+                    <td><span class="badge badge-check">检查/更换</span> 检查 T 型手柄紧固情况，确保裙边与地面保持适当接触。</td>
+                </tr>
+                <tr>
+                    <td><strong>防静电带 (Earth Belts)</strong></td>
+                    <td>静电带磨损严重，无法接触地面。</td>
+                    <td><span class="badge badge-replace">更换</span> 确保接地静电带完好且垂直垂落至地面。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. 水路与过滤系统 (Tanks & Filters)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>维护项目</th>
+                    <th>检查标准 (Standard)</th>
+                    <th>操作规程 (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>污水箱滤芯</strong></td>
+                    <td>滤网堵塞、有异味或不锈钢网面破损。</td>
+                    <td><span class="badge badge-clean">清洁</span> 取出滤网，使用清水双向冲洗，清理滤网底座。</td>
+                </tr>
+                <tr>
+                    <td><strong>清水过滤网</strong></td>
+                    <td>滤杯内有明显沉淀物或生物粘膜。</td>
+                    <td><span class="badge badge-clean">清洁</span> 关闭球阀，旋开滤盖取出滤芯，冲洗干净后复位。</td>
+                </tr>
+                <tr>
+                    <td><strong>碎屑过滤袋</strong></td>
+                    <td>袋内积满杂物或纤维老化破损。</td>
+                    <td><span class="badge badge-clean">清洁/更换</span> 清空碎屑，清洗并晾干。破损必须更换。</td>
+                </tr>
+                <tr>
+                    <td><strong>吸污软管 (Hose)</strong></td>
+                    <td>管壁内积垢严重，水流排速变慢。</td>
+                    <td><span class="badge badge-clean">自清洗</span> 启动真空模式，将吸管浸入清水桶进行循环冲洗。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. 传感器与电子模块 (Sensors & Power)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>维护项目</th>
+                    <th>检查标准 (Standard)</th>
+                    <th>操作规程 (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>3D LiDAR / 相机</strong></td>
+                    <td>窗口表面有指纹、油渍或厚灰尘（会导致导航报错）。</td>
+                    <td><span class="badge badge-clean">清洁</span> 使用无水酒精及无尘布从中心向外圆周擦拭。</td>
+                </tr>
+                <tr>
+                    <td><strong>充电触点 (Panels)</strong></td>
+                    <td>触点表面有黑色氧化层或电蚀坑。</td>
+                    <td><span class="badge badge-clean">打磨清洁</span> 清除脏污，必要时用细砂纸轻微打磨氧化层。</td>
+                </tr>
+                <tr>
+                    <td><strong>OTA 软件更新</strong></td>
+                    <td>当前版本低于官方发布的最新稳定版。</td>
+                    <td><span class="badge badge-check">更新</span> 在后台检查并执行固件升级。</td>
+                </tr>
+                <tr>
+                    <td><strong>电池 (Battery)</strong></td>
+                    <td>电量无法充满或充放电异常。</td>
+                    <td><span class="badge badge-check">深度充电</span> 手动将机器充满至 100%，检查充电器状态。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. 电机与传动 (Motors & Actuators)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>维护项目</th>
+                    <th>检查标准 (Standard)</th>
+                    <th>操作规程 (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>真空/刷盘电机</strong></td>
+                    <td>运行电流异常或有异常机械摩擦声。</td>
+                    <td><span class="badge badge-check">数据诊断</span> 登录 <strong>Admin 账户</strong>，在诊断页面测试电机电流数据。</td>
+                </tr>
+                <tr>
+                    <td><strong>升降推杆 (Actuator)</strong></td>
+                    <td>升降动作不顺滑或有异响。</td>
+                    <td><span class="badge badge-check">润滑</span> 清理推杆活塞杆灰尘，涂抹适量润滑油脂。</td>
+                </tr>
+                <tr>
+                    <td><strong>驱动轮 (Wheels)</strong></td>
+                    <td>胎面磨损至极限标志，或有明显物理损伤。</td>
+                    <td><span class="badge badge-check">检查</span> 检查轮毂紧固情况，确认胎面附着力正常。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note-box">
+            <strong>⚠️ 技术提醒:</strong>
+            <ul>
+                <li>维护前请务必按下红色 <strong>Emergency Stop</strong> 或切断总电源。</li>
+                <li>内部组件测试需登录设备管理员权限 (Admin Account)。</li>
+                <li>建议每年更换一次污水箱滤芯和碎屑过滤袋以延长电机寿命。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <strong>EnergieReich Consulting GmbH</strong><br>
+            Am Schleifweg 16, 55128 Mainz, Deutschland<br>
+            Hotline: +49 6131 4822520 | 网站: <a href="http://www.energiereich-consulting.com" target="_blank">www.energiereich-consulting.com</a><br>
+            <br>
+            © 2026 EnergieReich Consulting GmbH | 仅供授权代理商维护参考
+        </div>
+    </div>
+
+    <div id="en" class="lang-section">
+        <header>
+            <h1>CenoBots L4 Annual Maintenance Standard (SOP)</h1>
+            <div class="version">Authorized by: EnergieReich Consulting GmbH<br>Document Version: V1.3 | Release Date: 2026-03-18</div>
+        </header>
+
+        <div class="system-status-info">
+            As long as there are no alarm prompts on the system, there is generally no need to worry about the device status.
+        </div>
+
+        <p>This guide is intended for authorized dealer technicians to perform annual regular maintenance on the <strong>CenoBots L4 autonomous scrubber dryer</strong>. It aims to ensure the equipment is in optimal operating condition through clear inspection standards and operational specifications.</p>
+
+        <h2>1. Core Consumables & Structure (Consumables)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maintenance Item</th>
+                    <th>Inspection Standard (Standard)</th>
+                    <th>Action (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Disk Brush</strong></td>
+                    <td>Bristle wear is reduced by over 50%, or severe uneven wear occurs.</td>
+                    <td><span class="badge badge-replace">Check/Replace</span> Remove the disk brush, clean debris entangled around the motor shaft, and replace with a new one if necessary.</td>
+                </tr>
+                <tr>
+                    <td><strong>Squeegee Blade</strong></td>
+                    <td>Edges have gaps, cracks, or have softened, leading to reduced suction effectiveness.</td>
+                    <td><span class="badge badge-clean">Clean/Flip</span> Clean the blades. For annual maintenance, it is recommended to flip to an unworn edge or replace with new Linatex blades.</td>
+                </tr>
+                <tr>
+                    <td><strong>Side/Front Skirts</strong></td>
+                    <td>Rubber skirts show permanent deformation or damage, failing to block water.</td>
+                    <td><span class="badge badge-check">Check/Replace</span> Check the tightness of the T-handles to ensure the skirts maintain proper contact with the ground.</td>
+                </tr>
+                <tr>
+                    <td><strong>Anti-Static Earth Belts</strong></td>
+                    <td>Belts are severely worn and cannot touch the ground.</td>
+                    <td><span class="badge badge-replace">Replace</span> Ensure the anti-static earth belts are intact and hang vertically to the ground.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Water & Filtration Systems (Tanks & Filters)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maintenance Item</th>
+                    <th>Inspection Standard (Standard)</th>
+                    <th>Action (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Recovery Tank Filter</strong></td>
+                    <td>Mesh is clogged, has odor, or the stainless steel mesh is damaged.</td>
+                    <td><span class="badge badge-clean">Clean</span> Remove the filter, rinse bidirectionally with clean water, and clean the filter base.</td>
+                </tr>
+                <tr>
+                    <td><strong>Clean Water Filter</strong></td>
+                    <td>Visible sediment or biofilm in the filter cup.</td>
+                    <td><span class="badge badge-clean">Clean</span> Close the ball valve, unscrew the filter cover, remove the core, rinse clean, and reinstall.</td>
+                </tr>
+                <tr>
+                    <td><strong>Debris Filter Bag</strong></td>
+                    <td>Bag is full of debris or the fibers are aging and damaged.</td>
+                    <td><span class="badge badge-clean">Clean/Replace</span> Empty debris, wash, and dry. Must be replaced if damaged.</td>
+                </tr>
+                <tr>
+                    <td><strong>Suction Hose</strong></td>
+                    <td>Severe scaling inside the tube wall, slowing water flow.</td>
+                    <td><span class="badge badge-clean">Self-Clean</span> Start vacuum mode and submerge the suction hose into a bucket of clean water for cyclic rinsing.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. Sensors & Electronic Modules (Sensors & Power)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maintenance Item</th>
+                    <th>Inspection Standard (Standard)</th>
+                    <th>Action (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>3D LiDAR / Camera</strong></td>
+                    <td>Window surface has fingerprints, oil stains, or thick dust (causes navigation errors).</td>
+                    <td><span class="badge badge-clean">Clean</span> Wipe circularly from the center outwards using anhydrous alcohol and a lint-free cloth.</td>
+                </tr>
+                <tr>
+                    <td><strong>Charging Panels</strong></td>
+                    <td>Contact surface has a black oxidation layer or electrical erosion pits.</td>
+                    <td><span class="badge badge-clean">Polish/Clean</span> Remove dirt, and lightly polish the oxidation layer with fine sandpaper if necessary.</td>
+                </tr>
+                <tr>
+                    <td><strong>OTA Software Update</strong></td>
+                    <td>Current version is lower than the latest official stable release.</td>
+                    <td><span class="badge badge-check">Update</span> Check in the background and perform the firmware upgrade.</td>
+                </tr>
+                <tr>
+                    <td><strong>Battery</strong></td>
+                    <td>Unable to fully charge or abnormal charging/discharging.</td>
+                    <td><span class="badge badge-check">Deep Charge</span> Manually charge the machine to 100% and check the charger status.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Motors & Transmission (Motors & Actuators)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maintenance Item</th>
+                    <th>Inspection Standard (Standard)</th>
+                    <th>Action (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Vacuum / Brush Motor</strong></td>
+                    <td>Abnormal operating current or abnormal mechanical friction noise.</td>
+                    <td><span class="badge badge-check">Data Diag.</span> Log into the <strong>Admin account</strong> and test motor current data on the diagnostics page.</td>
+                </tr>
+                <tr>
+                    <td><strong>Lifting Actuator</strong></td>
+                    <td>Lifting action is not smooth or has abnormal noise.</td>
+                    <td><span class="badge badge-check">Lubricate</span> Clean dust from the actuator piston rod and apply an appropriate amount of lubricating grease.</td>
+                </tr>
+                <tr>
+                    <td><strong>Drive Wheels</strong></td>
+                    <td>Tread is worn to the limit mark, or there is obvious physical damage.</td>
+                    <td><span class="badge badge-check">Check</span> Check the tightness of the wheel hub and confirm normal tread adhesion.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note-box">
+            <strong>⚠️ Technical Reminder:</strong>
+            <ul>
+                <li>Always press the red <strong>Emergency Stop</strong> or cut off main power before maintenance.</li>
+                <li>Internal component testing requires device Administrator privileges (Admin Account).</li>
+                <li>It is recommended to replace the recovery tank filter and debris filter bag once a year to extend motor life.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <strong>EnergieReich Consulting GmbH</strong><br>
+            Am Schleifweg 16, 55128 Mainz, Deutschland<br>
+            Hotline: +49 6131 4822520 | Website: <a href="http://www.energiereich-consulting.com" target="_blank">www.energiereich-consulting.com</a><br>
+            <br>
+            © 2026 EnergieReich Consulting GmbH | For Authorized Dealer Maintenance Reference Only
+        </div>
+    </div>
+
+    <div id="de" class="lang-section">
+        <header>
+            <h1>CenoBots L4 Jährlicher Wartungsstandard (SOP)</h1>
+            <div class="version">Autorisiert durch: EnergieReich Consulting GmbH<br>Dokumentversion: V1.3 | Datum: 18.03.2026</div>
+        </header>
+
+        <div class="system-status-info">
+            Solange das System keine Alarmmeldungen anzeigt, besteht im Allgemeinen kein Grund zur Sorge um den Gerätestatus.
+        </div>
+
+        <p>Diese Anleitung richtet sich an Techniker autorisierter Händler zur Durchführung der regelmäßigen jährlichen Wartung der <strong>autonomen Scheuersaugmaschine CenoBots L4</strong>. Ziel ist es, durch klare Prüfstandards und Betriebsspezifikationen einen optimalen Betriebszustand des Geräts sicherzustellen.</p>
+
+        <h2>1. Kernverschleißteile & Struktur (Consumables)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Wartungspunkt</th>
+                    <th>Prüfstandard (Standard)</th>
+                    <th>Maßnahme (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Tellerbürste (Disk Brush)</strong></td>
+                    <td>Borstenverschleiß über 50% oder starke ungleichmäßige Abnutzung.</td>
+                    <td><span class="badge badge-replace">Prüfen/Tauschen</span> Tellerbürste abnehmen, Motorwelle von Verwicklungen befreien, bei Bedarf durch eine neue ersetzen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sauglippen (Squeegee)</strong></td>
+                    <td>Kanten weisen Lücken oder Risse auf, oder sind weich geworden, was die Saugleistung mindert.</td>
+                    <td><span class="badge badge-clean">Reinigen/Wenden</span> Lippen reinigen. Bei der jährlichen Wartung wird empfohlen, auf eine unbenutzte Kante zu wenden oder neue Linatex-Lippen einzusetzen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Seiten-/Frontschürzen (Skirts)</strong></td>
+                    <td>Gummischürzen weisen dauerhafte Verformungen oder Schäden auf und halten das Wasser nicht zurück.</td>
+                    <td><span class="badge badge-check">Prüfen/Tauschen</span> Festigkeit der T-Griffe prüfen, um einen angemessenen Bodenkontakt der Schürzen sicherzustellen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Antistatikbänder (Earth Belts)</strong></td>
+                    <td>Bänder sind stark abgenutzt und berühren den Boden nicht mehr.</td>
+                    <td><span class="badge badge-replace">Austauschen</span> Sicherstellen, dass die Antistatikbänder intakt sind und senkrecht auf den Boden hängen.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Wasser- & Filtersysteme (Tanks & Filters)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Wartungspunkt</th>
+                    <th>Prüfstandard (Standard)</th>
+                    <th>Maßnahme (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Schmutzwassertank-Filter</strong></td>
+                    <td>Netz verstopft, riecht oder das Edelstahlnetz ist beschädigt.</td>
+                    <td><span class="badge badge-clean">Reinigen</span> Filter entnehmen, in beide Richtungen mit klarem Wasser spülen und die Filterbasis reinigen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Frischwasserfilter</strong></td>
+                    <td>Sichtbare Ablagerungen oder Biofilm in der Filtertasse.</td>
+                    <td><span class="badge badge-clean">Reinigen</span> Kugelhahn schließen, Filterdeckel abschrauben, Kern entnehmen, sauber spülen und wieder einsetzen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Schmutzfilterbeutel</strong></td>
+                    <td>Beutel ist voll mit Schmutz oder die Fasern sind gealtert und beschädigt.</td>
+                    <td><span class="badge badge-clean">Reinigen/Tauschen</span> Schmutz entleeren, waschen und trocknen. Bei Beschädigung zwingend austauschen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Saugschlauch (Hose)</strong></td>
+                    <td>Starke Ablagerungen an der Rohrinnenwand, verlangsamter Wasserabfluss.</td>
+                    <td><span class="badge badge-clean">Selbstreinigung</span> Vakuummodus starten und den Saugschlauch zum zyklischen Spülen in einen Eimer mit klarem Wasser tauchen.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. Sensoren & Elektronikmodule (Sensors & Power)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Wartungspunkt</th>
+                    <th>Prüfstandard (Standard)</th>
+                    <th>Maßnahme (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>3D LiDAR / Kamera</strong></td>
+                    <td>Fensteroberfläche hat Fingerabdrücke, Ölflecken oder dicken Staub (verursacht Navigationsfehler).</td>
+                    <td><span class="badge badge-clean">Reinigen</span> Mit wasserfreiem Alkohol und einem fusselfreien Tuch kreisförmig von der Mitte nach außen wischen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ladekontakte (Panels)</strong></td>
+                    <td>Kontaktoberfläche weist eine schwarze Oxidschicht oder Erosionslöcher auf.</td>
+                    <td><span class="badge badge-clean">Polieren/Reinigen</span> Schmutz entfernen, bei Bedarf Oxidschicht leicht mit feinem Schleifpapier abschleifen.</td>
+                </tr>
+                <tr>
+                    <td><strong>OTA-Software-Update</strong></td>
+                    <td>Aktuelle Version ist niedriger als die neueste offizielle stabile Version.</td>
+                    <td><span class="badge badge-check">Update</span> Im Hintergrund prüfen und Firmware-Upgrade durchführen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Batterie (Battery)</strong></td>
+                    <td>Lädt nicht vollständig auf oder anormale Lade-/Entladevorgänge.</td>
+                    <td><span class="badge badge-check">Tiefenladung</span> Maschine manuell auf 100% aufladen und den Ladestatus prüfen.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Motoren & Antrieb (Motors & Actuators)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Wartungspunkt</th>
+                    <th>Prüfstandard (Standard)</th>
+                    <th>Maßnahme (Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Vakuum- / Bürstenmotor</strong></td>
+                    <td>Anormaler Betriebsstrom oder anormale mechanische Reibungsgeräusche.</td>
+                    <td><span class="badge badge-check">Daten-Diagnose</span> Als <strong>Admin</strong> anmelden und Motorstromdaten auf der Diagnoseseite testen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Hubzylinder (Actuator)</strong></td>
+                    <td>Hubbewegung ist nicht reibungslos oder macht ungewöhnliche Geräusche.</td>
+                    <td><span class="badge badge-check">Schmieren</span> Staub von der Kolbenstange des Aktuators reinigen und angemessen Schmierfett auftragen.</td>
+                </tr>
+                <tr>
+                    <td><strong>Antriebsräder (Wheels)</strong></td>
+                    <td>Profil ist bis zur Verschleißgrenze abgenutzt oder weist deutliche physische Schäden auf.</td>
+                    <td><span class="badge badge-check">Prüfen</span> Festigkeit der Radnabe prüfen und normale Profilhaftung bestätigen.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note-box">
+            <strong>⚠️ Technischer Hinweis:</strong>
+            <ul>
+                <li>Vor Wartungsarbeiten immer den roten <strong>Not-Aus (Emergency Stop)</strong> drücken oder den Hauptstrom trennen.</li>
+                <li>Interne Komponententests erfordern Administratorrechte (Admin Account).</li>
+                <li>Es wird empfohlen, den Schmutzwassertank-Filter und den Schmutzfilterbeutel einmal jährlich auszutauschen, um die Lebensdauer des Motors zu verlängern.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <strong>EnergieReich Consulting GmbH</strong><br>
+            Am Schleifweg 16, 55128 Mainz, Deutschland<br>
+            Hotline: +49 6131 4822520 | Website: <a href="http://www.energiereich-consulting.com" target="_blank">www.energiereich-consulting.com</a><br>
+            <br>
+            © 2026 EnergieReich Consulting GmbH | Nur als Referenz für die Wartung durch autorisierte Händler
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function switchLanguage(lang, btnElement) {
+        // 1. 隐藏所有语言区块
+        var sections = document.getElementsByClassName('lang-section');
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].classList.remove('active');
+        }
+        
+        // 2. 显示选中的语言区块
+        document.getElementById(lang).classList.add('active');
+        
+        // 3. 移除所有按钮的激活状态
+        var buttons = document.getElementsByClassName('lang-btn');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('active');
+        }
+        
+        // 4. 给当前点击的按钮添加激活状态
+        btnElement.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
