@@ -121,7 +121,7 @@
             .lang-switcher-container { display: none; } /* 打印时隐藏切换按钮 */
         }
 
-        /* ================= 新增：多语种切换样式 ================= */
+        /* ================= 多语种切换样式 ================= */
         .lang-switcher-container {
             text-align: right;
             margin-bottom: 15px;
@@ -151,6 +151,47 @@
         .lang-section.active {
             display: block;
         }
+
+        /* ================= 新增：手机端（移动端）响应式适配 ================= */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px 15px;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .version {
+                text-align: left;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            .lang-switcher-container {
+                text-align: left;
+            }
+            .lang-btn {
+                margin-left: 0;
+                margin-right: 8px;
+                margin-bottom: 8px;
+            }
+            /* 让表格在手机端可以左右滑动，防止撑爆屏幕 */
+            table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            th, td {
+                min-width: 100px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,7 +206,7 @@
 
     <div id="zh" class="lang-section active">
         <header>
-            <h1>CenoBots L4 年度维护标准 (Wartung SOP)</h1>
+            <h1>CenoBots L4 年度维护标准</h1>
             <div class="version">授权发布: EnergieReich Consulting GmbH<br>文档版本: V1.3 | 发布日期: 2026-03-18</div>
         </header>
 
@@ -175,46 +216,46 @@
 
         <p>本指南适用于授权代理商技术人员对 <strong>CenoBots L4 自主洗地机</strong> 进行年度定期保养。旨在通过明确的检查标准和操作规范，确保设备处于最佳运行状态。</p>
 
-        <h2>1. 核心耗材与结构 (Consumables)</h2>
+        <h2>1. 核心耗材与结构</h2>
         <table>
             <thead>
                 <tr>
                     <th>维护项目</th>
-                    <th>检查标准 (Standard)</th>
-                    <th>操作规程 (Action)</th>
+                    <th>检查标准</th>
+                    <th>操作规程</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>盘刷 (Disk Brush)</strong></td>
+                    <td><strong>盘刷</strong></td>
                     <td>刷毛磨损高度减少超过 50%，或出现严重不均匀磨损。</td>
                     <td><span class="badge badge-replace">检查/更换</span> 卸下盘刷，清理电机轴心缠绕物，必要时更换新件。</td>
                 </tr>
                 <tr>
-                    <td><strong>吸水扒胶条 (Squeegee)</strong></td>
+                    <td><strong>吸水扒胶条</strong></td>
                     <td>胶条边缘出现豁口、裂纹或变软导致吸水效果下降。</td>
                     <td><span class="badge badge-clean">清洁/翻面</span> 清洗胶条。年度维护建议直接翻面使用未磨损边或更换新 Linatex 胶条。</td>
                 </tr>
                 <tr>
-                    <td><strong>侧裙/前裙 (Skirts)</strong></td>
+                    <td><strong>侧裙/前裙</strong></td>
                     <td>裙边橡胶出现永久性形变或破损，无法挡水。</td>
                     <td><span class="badge badge-check">检查/更换</span> 检查 T 型手柄紧固情况，确保裙边与地面保持适当接触。</td>
                 </tr>
                 <tr>
-                    <td><strong>防静电带 (Earth Belts)</strong></td>
+                    <td><strong>防静电带</strong></td>
                     <td>静电带磨损严重，无法接触地面。</td>
                     <td><span class="badge badge-replace">更换</span> 确保接地静电带完好且垂直垂落至地面。</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>2. 水路与过滤系统 (Tanks & Filters)</h2>
+        <h2>2. 水路与过滤系统</h2>
         <table>
             <thead>
                 <tr>
                     <th>维护项目</th>
-                    <th>检查标准 (Standard)</th>
-                    <th>操作规程 (Action)</th>
+                    <th>检查标准</th>
+                    <th>操作规程</th>
                 </tr>
             </thead>
             <tbody>
@@ -234,20 +275,20 @@
                     <td><span class="badge badge-clean">清洁/更换</span> 清空碎屑，清洗并晾干。破损必须更换。</td>
                 </tr>
                 <tr>
-                    <td><strong>吸污软管 (Hose)</strong></td>
+                    <td><strong>吸污软管</strong></td>
                     <td>管壁内积垢严重，水流排速变慢。</td>
                     <td><span class="badge badge-clean">自清洗</span> 启动真空模式，将吸管浸入清水桶进行循环冲洗。</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>3. 传感器与电子模块 (Sensors & Power)</h2>
+        <h2>3. 传感器与电子模块</h2>
         <table>
             <thead>
                 <tr>
                     <th>维护项目</th>
-                    <th>检查标准 (Standard)</th>
-                    <th>操作规程 (Action)</th>
+                    <th>检查标准</th>
+                    <th>操作规程</th>
                 </tr>
             </thead>
             <tbody>
@@ -257,7 +298,7 @@
                     <td><span class="badge badge-clean">清洁</span> 使用无水酒精及无尘布从中心向外圆周擦拭。</td>
                 </tr>
                 <tr>
-                    <td><strong>充电触点 (Panels)</strong></td>
+                    <td><strong>充电触点</strong></td>
                     <td>触点表面有黑色氧化层或电蚀坑。</td>
                     <td><span class="badge badge-clean">打磨清洁</span> 清除脏污，必要时用细砂纸轻微打磨氧化层。</td>
                 </tr>
@@ -267,35 +308,35 @@
                     <td><span class="badge badge-check">更新</span> 在后台检查并执行固件升级。</td>
                 </tr>
                 <tr>
-                    <td><strong>电池 (Battery)</strong></td>
+                    <td><strong>电池</strong></td>
                     <td>电量无法充满或充放电异常。</td>
                     <td><span class="badge badge-check">深度充电</span> 手动将机器充满至 100%，检查充电器状态。</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>4. 电机与传动 (Motors & Actuators)</h2>
+        <h2>4. 电机与传动</h2>
         <table>
             <thead>
                 <tr>
                     <th>维护项目</th>
-                    <th>检查标准 (Standard)</th>
-                    <th>操作规程 (Action)</th>
+                    <th>检查标准</th>
+                    <th>操作规程</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><strong>真空/刷盘电机</strong></td>
                     <td>运行电流异常或有异常机械摩擦声。</td>
-                    <td><span class="badge badge-check">数据诊断</span> 登录 <strong>Admin 账户</strong>，在诊断页面测试电机电流数据。</td>
+                    <td><span class="badge badge-check">数据诊断</span> 登录 <strong>管理员账户</strong>，在诊断页面测试电机电流数据。</td>
                 </tr>
                 <tr>
-                    <td><strong>升降推杆 (Actuator)</strong></td>
+                    <td><strong>升降推杆</strong></td>
                     <td>升降动作不顺滑或有异响。</td>
                     <td><span class="badge badge-check">润滑</span> 清理推杆活塞杆灰尘，涂抹适量润滑油脂。</td>
                 </tr>
                 <tr>
-                    <td><strong>驱动轮 (Wheels)</strong></td>
+                    <td><strong>驱动轮</strong></td>
                     <td>胎面磨损至极限标志，或有明显物理损伤。</td>
                     <td><span class="badge badge-check">检查</span> 检查轮毂紧固情况，确认胎面附着力正常。</td>
                 </tr>
@@ -305,8 +346,8 @@
         <div class="note-box">
             <strong>⚠️ 技术提醒:</strong>
             <ul>
-                <li>维护前请务必按下红色 <strong>Emergency Stop</strong> 或切断总电源。</li>
-                <li>内部组件测试需登录设备管理员权限 (Admin Account)。</li>
+                <li>维护前请务必按下红色 <strong>急停开关</strong> 或切断总电源。</li>
+                <li>内部组件测试需登录设备管理员权限。</li>
                 <li>建议每年更换一次污水箱滤芯和碎屑过滤袋以延长电机寿命。</li>
             </ul>
         </div>
