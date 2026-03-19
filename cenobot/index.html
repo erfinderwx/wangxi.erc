@@ -157,7 +157,7 @@
             display: block;
         }
 
-        /* ================= 优化点 2：专属打印/导出PDF配置 ================= */
+        /* ================= Optimization 2: Specific Print/Export PDF Configuration ================= */
         @media print {
             body { 
                 background: white; 
@@ -169,16 +169,16 @@
                 border: none; 
                 width: 100%; 
                 max-width: 100%; 
-                padding: 0; /* 移除外框内边距，利用整张A4纸 */
+                padding: 0; /* Remove container padding to utilize the full A4 sheet */
                 margin: 0;
             }
-            .lang-switcher-container { display: none; } /* 打印时隐藏右上角按钮 */
+            .lang-switcher-container { display: none; } /* Hide the top-right button during printing */
             
-            /* 确保跨页时，表格行不会被切成上下两截 */
+            /* Ensure table rows are not split across pages */
             table { page-break-inside: auto; }
             tr { page-break-inside: avoid; page-break-after: auto; }
             
-            /* 打印时微调字体和间距，防止撑破页面边界 */
+            /* Fine-tune font size and padding for printing to prevent overflowing page boundaries */
             th, td { 
                 padding: 8px 10px; 
                 font-size: 11pt; 
