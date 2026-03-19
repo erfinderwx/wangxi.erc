@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CenoBots L4 年度维护指南 | EnergieReich Consulting GmbH</title>
     <style>
-        /* ================= 原有样式，未做任何修改 ================= */
+        /* ================= 原有基础样式 ================= */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -65,12 +65,12 @@
             margin-top: 30px;
         }
         
-        /* ================= 修改点 1：调整表格列宽与布局 ================= */
+        /* ================= 优化点 1：表格宽度与列分布 ================= */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            table-layout: fixed; /* 强制固定布局，防止内容撑破屏幕 */
+            table-layout: fixed; /* 强制固定布局，防止内容撑破屏幕或纸张 */
         }
         th, td {
             border: 1px solid #ddd;
@@ -84,10 +84,11 @@
             color: #333;
             font-weight: 600;
         }
-        /* 精确控制列宽，减小第一列的宽度 */
-        th:nth-child(1), td:nth-child(1) { width: 22%; }
-        th:nth-child(2), td:nth-child(2) { width: 38%; }
-        th:nth-child(3), td:nth-child(3) { width: 40%; }
+        
+        /* 稍微减小第一列，给后面描述内容留出充足空间 */
+        th:nth-child(1), td:nth-child(1) { width: 18%; }
+        th:nth-child(2), td:nth-child(2) { width: 37%; }
+        th:nth-child(3), td:nth-child(3) { width: 45%; }
 
         .badge {
             display: inline-block;
@@ -124,11 +125,6 @@
             color: #0056b3;
             text-decoration: none;
         }
-        @media print {
-            body { background: white; padding: 0; }
-            .container { box-shadow: none; border: none; width: 100%; max-width: none; }
-            .lang-switcher-container { display: none; } /* 打印时隐藏切换按钮 */
-        }
 
         /* ================= 多语种切换样式 ================= */
         .lang-switcher-container {
@@ -161,44 +157,51 @@
             display: block;
         }
 
-        /* ================= 修改点 2：手机端（移动端）响应式适配 ================= */
+        /* ================= 优化点 2：专属打印/导出PDF配置 ================= */
+        @media print {
+            body { 
+                background: white; 
+                padding: 0; 
+                margin: 0; 
+            }
+            .container { 
+                box-shadow: none; 
+                border: none; 
+                width: 100%; 
+                max-width: 100%; 
+                padding: 0; /* 移除外框内边距，利用整张A4纸 */
+                margin: 0;
+            }
+            .lang-switcher-container { display: none; } /* 打印时隐藏右上角按钮 */
+            
+            /* 确保跨页时，表格行不会被切成上下两截 */
+            table { page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            
+            /* 打印时微调字体和间距，防止撑破页面边界 */
+            th, td { 
+                padding: 8px 10px; 
+                font-size: 11pt; 
+            }
+            h2 { margin-top: 20px; }
+        }
+
+        /* ================= 优化点 3：手机端适配 ================= */
         @media screen and (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 20px 15px;
-            }
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            .version {
-                text-align: left;
-            }
-            h1 {
-                font-size: 22px;
-            }
-            h2 {
-                font-size: 18px;
-            }
-            .lang-switcher-container {
-                text-align: left;
-            }
-            .lang-btn {
-                margin-left: 0;
-                margin-right: 8px;
-                margin-bottom: 8px;
-            }
+            body { padding: 10px; }
+            .container { padding: 20px 15px; }
+            header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .version { text-align: left; }
+            h1 { font-size: 22px; }
+            h2 { font-size: 18px; }
+            .lang-switcher-container { text-align: left; }
+            .lang-btn { margin-left: 0; margin-right: 8px; margin-bottom: 8px; }
+            
             /* 手机端表格完整显示，免横向滑动 */
-            table {
-                display: table;
-                width: 100%;
-            }
+            table { display: table; width: 100%; }
             th, td {
-                padding: 8px 5px; /* 进一步缩小内边距以节省空间 */
-                font-size: 12px; /* 缩小文字字号适配手机 */
+                padding: 8px 5px; 
+                font-size: 12px; 
             }
             .badge {
                 padding: 3px 5px;
@@ -206,6 +209,10 @@
                 margin-bottom: 4px;
                 display: inline-block;
             }
+            /* 手机端适当放宽第一列 */
+            th:nth-child(1), td:nth-child(1) { width: 22%; }
+            th:nth-child(2), td:nth-child(2) { width: 35%; }
+            th:nth-child(3), td:nth-child(3) { width: 43%; }
         }
     </style>
 </head>
